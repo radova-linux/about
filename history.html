@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#FFFFFF">
+  <title>History — Radova Linux</title>
+  <meta name="description" content="How Radova Linux grew from a personal project in 2019 to its public release in 2026.">
+  <link rel="canonical" href="https://radova.org/history.html">
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/lato-latin-900.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-latin-wght.woff2" crossorigin>
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="stylesheet" href="/assets/about.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="ab-header">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="Radova Linux home">
+        <img src="/assets/logo.png" alt="" width="26" height="26">
+        RADOVA
+      </a>
+      <nav class="ab-nav" aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/index.html">About</a>
+        <a href="/history.html" aria-current="page">History</a>
+        <a href="https://sourceforge.net/projects/memora/files/radova-linux-2026.11.06-x86_64.iso/download" class="keep">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <section class="ab-hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <p class="eyebrow">History</p>
+        <h1 id="hero-title">From one idea <span>to one system.</span></h1>
+        <p class="sub">How Radova Linux grew from a personal project in 2019 to its public release in 2026.</p>
+      </div>
+    </section>
+
+    <!-- History timeline: one <li> per milestone, newest last.
+         Months and days below are PLACEHOLDERS (Jan 01): replace with the real dates.
+         Pill: "Place, <time>D Month YYYY</time>"; the filter reads the <time> datetime, not the text.
+         Illustrations (all CC0 / public domain, from Wikimedia Commons; no attribution required):
+           tux.png          File:Inkcape_Tux.png (CC0)
+           library.jpg      File:Estantería_de_la_Biblioteca_Vasconcelos.jpg (CC0)
+           programmer.jpg   File:Programmer_at_work_(Unsplash).jpg (CC0)
+           typing.mp4       File:Speed_typing_with_dvorak.webm (CC0), 10 s cut, no audio
+           archive-map.mp4  File:Bodleian_Libraries,_Mappemonde(KenBurns).webm (public domain), no audio
+           terminal.mp4     File:Gentoo-portage-installing-and-using-of-equery.webm (CC0), 20 s cut, no audio
+         Documentation (optional), inside .tl-card after the <p>:
+           photos: <div class="tl-media"><img src="/assets/history/NAME.jpg" alt="Describe the photo"></div>
+                   (shown as small thumbnails; the script makes each one open large in a pop-up)
+           video:  <div class="tl-media"><video src="/assets/history/NAME.mp4" controls preload="metadata" playsinline></video></div>
+         A period spanning years: add data-end="YYYY" to the <time> so the year filter finds it in every year.
+         People use the same .member chips as the team section on the about page. -->
+    <section class="ab-section tl-section" aria-label="Timeline">
+      <div class="wrap">
+        <!-- filled and shown by the script at the bottom; hidden without JavaScript -->
+        <form class="tl-filter" aria-label="Filter timeline" hidden>
+          <label>Year <select name="year"><option value="">All</option></select></label>
+          <label>Month <select name="month"><option value="">All</option></select></label>
+          <label>Day <select name="day"><option value="">All</option></select></label>
+          <button type="reset">Reset</button>
+          <p class="tl-count" role="status"></p>
+        </form>
+
+        <ol class="timeline" role="list">
+          <li>
+            <div class="tl-head">
+              <h3>A personal project</h3>
+              <span class="tl-pill">Jakarta, <time datetime="2018-01-01">1 Januari 2018</time></span>
+            </div>
+            <div class="tl-card">
+              <p>Radova began with one simple idea: an operating system that is fast, secure, and usable by information institutions at every level.</p>
+              <div class="tl-media"><img src="/assets/history/tux.png" alt="Tux, the Linux penguin mascot" width="564" height="570" loading="lazy"></div>
+            </div>
+          </li>
+          <li>
+            <div class="tl-head">
+              <h3>Research</h3>
+              <span class="tl-pill">Jakarta, <time datetime="2022-01-01" data-end="2024">1 Januari 2022&ndash;2024</time></span>
+            </div>
+            <div class="tl-card">
+              <p>Bai and null led the research into what an operating system for information management really needs.</p>
+              <ul class="members" role="list" aria-label="Research team">
+                <li class="member"><span class="avatar" aria-hidden="true">B</span><span class="member-name">Bai</span></li>
+                <li class="member"><span class="avatar" aria-hidden="true">N</span><span class="member-name">null</span></li>
+              </ul>
+              <div class="tl-media"><img src="/assets/history/library.jpg" alt="Library shelves at Biblioteca Vasconcelos" width="1000" height="749" loading="lazy"><video src="/assets/history/archive-map.mp4" poster="/assets/history/archive-map.jpg" title="An archived world map from the Bodleian Libraries" preload="none" controls playsinline muted></video></div>
+            </div>
+          </li>
+          <li>
+            <div class="tl-head">
+              <h3>Built in-house</h3>
+              <span class="tl-pill">Jakarta, <time datetime="2024-01-01">1 Januari 2024</time></span>
+            </div>
+            <div class="tl-card">
+              <p>An internal development team began building Radova, and Haidar and Sulthan ran its first internal trials.</p>
+              <ul class="members" role="list" aria-label="Internal testers">
+                <li class="member"><span class="avatar" aria-hidden="true">H</span><span class="member-name">Haidar</span></li>
+                <li class="member"><span class="avatar" aria-hidden="true">S</span><span class="member-name">Sulthan</span></li>
+              </ul>
+              <div class="tl-media"><img src="/assets/history/programmer.jpg" alt="A developer working on a laptop" width="1000" height="724" loading="lazy"><video src="/assets/history/typing.mp4" poster="/assets/history/typing.jpg" title="Typing on a keyboard" preload="none" controls playsinline muted></video></div>
+            </div>
+          </li>
+          <li>
+            <div class="tl-head">
+              <h3>Developed in the open</h3>
+              <span class="tl-pill">Jakarta, <time datetime="2025-01-01">1 Januari 2025</time></span>
+            </div>
+            <div class="tl-card">
+              <p>Haidar and Sulthan officially joined the team, and Radova moved to open, public development.</p>
+              <div class="tl-media"><video src="/assets/history/terminal.mp4" poster="/assets/history/terminal.jpg" title="Installing a package in a Linux terminal" preload="none" controls playsinline muted></video></div>
+            </div>
+          </li>
+          <li>
+            <div class="tl-head">
+              <h3>Kautsar joined</h3>
+              <span class="tl-pill">Jakarta, <time datetime="2026-01-01">1 Januari 2026</time></span>
+            </div>
+            <div class="tl-card">
+              <p>Kautsar joined the Radova team.</p>
+              <!-- shortcut: kautsar-join.jpg is his portrait standing in for real joining documentation, swap it when one exists -->
+              <ul class="members" role="list" aria-label="New member">
+                <li class="member"><span class="avatar"><img src="/assets/history/kautsar.jpg" alt="" width="36" height="36"></span><span class="member-name">Kautsar</span></li>
+              </ul>
+              <div class="tl-media"><img src="/assets/history/kautsar-join.jpg" alt="Kautsar" width="1000" height="1000" loading="lazy"></div>
+            </div>
+          </li>
+          <li class="tl-now">
+            <div class="tl-head">
+              <h3>Released</h3>
+              <span class="tl-pill">Jakarta, <time datetime="2026-01-01">1 Januari 2026</time></span>
+            </div>
+            <div class="tl-card">
+              <p>Radova Linux was officially released.</p>
+              <!-- shortcut: release.avif is a stand-in image, swap for the real release documentation -->
+              <div class="tl-media"><img src="/assets/history/release.avif" alt="Radova Linux release" width="336" height="188" loading="lazy"></div>
+            </div>
+          </li>
+        </ol>
+
+        <dialog class="tl-lightbox" aria-label="Documentation">
+          <form method="dialog"><button class="tl-close" aria-label="Close">&times;</button></form>
+          <img src="" alt="">
+          <video controls playsinline hidden></video>
+          <div class="tl-lb-bar">
+            <button type="button" class="tl-prev" aria-label="Previous">&lsaquo;</button>
+            <p class="tl-lb-caption"></p>
+            <span class="tl-lb-count"></span>
+            <button type="button" class="tl-next" aria-label="Next">&rsaquo;</button>
+          </div>
+        </dialog>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="ab-footer">
+    <div class="wrap">
+      <a class="brand" href="/">RADOVA</a>
+      <p>© 2026 Radova Linux</p>
+    </div>
+  </footer>
+
+
+  <script>
+    // Timeline: filter by year/month/day, then lay the visible milestones out left/right.
+    (() => {
+      const list = document.querySelector('.timeline');
+      const form = document.querySelector('.tl-filter');
+      const count = form.querySelector('.tl-count');
+      const items = [...list.children];
+      const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+      const dates = items.map((li) => {
+        const time = li.querySelector('time');
+        const [y, m, d] = time.dateTime.split('-').map(Number);
+        return { y, m, d, end: Number(time.dataset.end) || y };
+      });
+
+      const fill = (name, values, label) => {
+        [...new Set(values)].sort((a, b) => a - b)
+          .forEach((v) => form.elements[name].add(new Option(label(v), v)));
+      };
+      fill('year', dates.flatMap(({ y, end }) => Array.from({ length: end - y + 1 }, (_, i) => y + i)), String);
+      fill('month', dates.map(({ m }) => m), (m) => MONTHS[m - 1]);
+      fill('day', dates.map(({ d }) => d), String);
+
+      const apply = () => {
+        const [year, month, day] = ['year', 'month', 'day'].map((k) => Number(form.elements[k].value));
+        let shown = 0;
+        items.forEach((li, i) => {
+          const { y, m, d, end } = dates[i];
+          const match = (!year || (year >= y && year <= end)) && (!month || month === m) && (!day || day === d);
+          li.hidden = !match;
+          if (!match) return;
+          // each card spans two grid rows and starts one row after the previous card, so the sides interlock
+          li.dataset.side = shown % 2 ? 'right' : 'left';
+          li.style.setProperty('--row', shown + 1);
+          shown++;
+        });
+        count.textContent = shown ? `${shown} milestone${shown === 1 ? '' : 's'}` : 'No milestones match these filters.';
+      };
+
+      // documentation thumbnails (photos and videos) open in a pop-up gallery:
+      // ‹ › buttons, arrow keys or a swipe move through the media of the same milestone
+      const box = document.querySelector('.tl-lightbox');
+      const bigImg = box.querySelector('img');
+      const bigVid = box.querySelector('video');
+      const caption = box.querySelector('.tl-lb-caption');
+      const counter = box.querySelector('.tl-lb-count');
+      let gallery = [];
+      let current = 0;
+      let opener = null;
+
+      const thumbs = [...list.querySelectorAll('.tl-media :is(img, video)')].map((el) => {
+        const isVideo = el.tagName === 'VIDEO';
+        const name = isVideo ? el.title : el.alt;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = isVideo ? 'tl-thumb is-video' : 'tl-thumb';
+        btn.setAttribute('aria-label', `${isVideo ? 'Play video' : 'Enlarge photo'}${name ? `: ${name}` : ''}`);
+        if (isVideo) el.removeAttribute('controls'); // the thumbnail is just the poster; it plays in the pop-up
+        el.replaceWith(btn);
+        btn.append(el);
+        return { btn, el, isVideo, name };
+      });
+
+      const stopVideo = () => {
+        bigVid.pause();
+        bigVid.removeAttribute('src');
+        bigVid.load(); // stop downloading the clip
+      };
+
+      const show = (i) => {
+        current = (i + gallery.length) % gallery.length;
+        const { el, isVideo, name } = gallery[current];
+        stopVideo();
+        bigImg.hidden = isVideo;
+        bigVid.hidden = !isVideo;
+        if (isVideo) {
+          bigVid.src = el.currentSrc || el.src;
+          bigVid.play().catch(() => {}); // autoplay can be refused; the controls still work
+        } else {
+          bigImg.src = el.currentSrc || el.src;
+          bigImg.alt = el.alt;
+        }
+        caption.textContent = name;
+        counter.textContent = `${current + 1} / ${gallery.length}`;
+        box.classList.toggle('is-single', gallery.length < 2);
+      };
+
+      thumbs.forEach((t) => t.btn.addEventListener('click', () => {
+        const milestone = t.btn.closest('.timeline > li');
+        gallery = thumbs.filter((x) => x.btn.closest('.timeline > li') === milestone); // next/prev stay inside this milestone
+        opener = t.btn;
+        box.showModal();
+        show(gallery.indexOf(t));
+      }));
+
+      box.querySelector('.tl-prev').addEventListener('click', () => show(current - 1));
+      box.querySelector('.tl-next').addEventListener('click', () => show(current + 1));
+      box.addEventListener('keydown', (e) => {
+        if (e.target === bigVid) return; // arrows seek inside the video player
+        if (e.key === 'ArrowRight') show(current + 1);
+        if (e.key === 'ArrowLeft') show(current - 1);
+      });
+      let swipeX = null;
+      box.addEventListener('touchstart', (e) => { swipeX = e.touches[0].clientX; }, { passive: true });
+      box.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - swipeX;
+        if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+      });
+      box.addEventListener('click', (e) => { if (e.target === box) box.close(); });
+      box.addEventListener('close', () => {
+        stopVideo();
+        opener?.focus(); // Safari doesn't focus buttons on click, so restore it ourselves
+      });
+
+      form.addEventListener('change', apply);
+      form.addEventListener('reset', () => setTimeout(apply)); // values reset after the event
+      form.hidden = false;
+      list.classList.add('is-split');
+      apply();
+    })();
+  </script>
+</body>
+</html>
