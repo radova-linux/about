@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +7,10 @@
   <title>Contact — Radova Linux</title>
   <meta name="description" content="Get in touch with the Radova Linux team for support regarding institutional memory, archives, and digital asset sovereignty.">
   <link rel="canonical" href="https://radova.org/contact">
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/lato-latin-900.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/roboto-latin-wght.woff2" crossorigin>
-  <link rel="icon" type="image/svg+xml" href="/assets/logo.png">
-  <link rel="stylesheet" href="/assets/pico.min.css">
+  <link rel="stylesheet" href="/asset/pico.min.css">
   <link rel="stylesheet" href="/assets/site.css?v=8">
   <link rel="stylesheet" href="/assets/contact.css">
-  <!-- HTMX configuration -->
-  <meta name="htmx-config" content='{"allowEval":false,"allowScriptTags":false,"selfRequestsOnly":false,"includeIndicatorStyles":true}'>
 </head>
-
 <body>
 
   <a class="skip-link" href="#main">Skip to content</a>
@@ -33,6 +27,7 @@
   </header>
 
   <main id="main" tabindex="-1">
+
     <section id="contact-hero" class="hero" data-label="GET IN TOUCH" aria-labelledby="contact-title">
       <div class="hero-spec-strip" data-sys="SYS // NET 1 ">
         <p class="hero-chip">Secure Channels Open</p>
@@ -50,7 +45,7 @@
               <p>contact@radova.org</p>
             </article>
             <article class="ledger-item" data-index="02 /">
-              <h3>Matrix (Conduit)</h3>
+              <h3>Matrix</h3>
               <p>@admin:matrix.radova.org</p>
             </article>
             <article class="ledger-item" data-index="03 /">
@@ -64,11 +59,13 @@
           </div>
         </div>
 
-        <!-- Kolom Kanan: Form HTMX dengan Tab -->
+        <!-- Kolom Kanan: Form dengan Tab & Subject Lengkap -->
         <div class="hero-split-right">
-          <div class="hero-workbench" style="margin-top: 0;" data-waybar="contact@radova ~ form · status: ready">
+          <div class="hero-workbench" style="margin-top: 0;" data-waybar="contact@radova   ~   form   ·   status: ready">
             <div class="workbench-grid" style="grid-template-columns: 1fr;">
+              
               <div id="contact-response" class="deck-item" style="padding: 2rem;">
+                
                 <!-- Navigasi Tab -->
                 <div class="tab-nav">
                   <button type="button" class="tab-btn active" onclick="switchTab('Information', this)">Information</button>
@@ -76,13 +73,9 @@
                   <button type="button" class="tab-btn" onclick="switchTab('Collaboration', this)">Collaboration</button>
                 </div>
 
-                <!-- Pastikan URL_WEB_APP_KAMU_DISINI diganti! -->
-                <form
-                  hx-post="https://script.google.com/macros/s/AKfycbx_ipxtg9sxpAup2hmxzBN2NROT-j2GAzsbRuZWJ6Sb6pB-eExhYTeyo8AiYgTm1e7ZYw/exec"
-                  hx-target="#contact-response"
-                  hx-swap="innerHTML"
-                  hx-indicator="#loading-indicator"
-                  hx-headers='{"Content-Type": "application/x-www-form-urlencoded"}'>
+                <!-- Form Kontak -->
+                <form id="contact-form" onsubmit="sendData(event)">
+                  
                   <!-- Input tersembunyi untuk kategori tab -->
                   <input type="hidden" id="category" name="category" value="Information">
 
@@ -96,44 +89,63 @@
                     <input type="email" id="email" name="email" placeholder="john@example.com" required class="form-input">
                   </div>
 
+                  <!-- Dropdown Subject Lengkap Berdasarkan OS & Sistem Radova -->
                   <div style="margin-bottom: 1.5rem;">
                     <label for="subject">Subject</label>
+                    
+                    <!-- Subject untuk Tab Information (Default) -->
                     <select id="subject-info" name="subject" class="tab-content active form-input" required>
                       <option value="" disabled selected>Select an inquiry topic...</option>
                       <option value="General Inquiry">General Inquiry</option>
                       <option value="Memora / Library Management">Memora / Library Management</option>
+                      <option value="Evrocks / Archive Management">Evrocks / Archive Management</option>
+                      <option value="Coretez / DAM">Coretez / DAM</option>
+                      <option value="Linkers / Repository">Linkers / Repository</option>
                     </select>
 
+                    <!-- Subject untuk Tab Report Bugs -->
                     <select id="subject-bug" name="subject" class="tab-content form-input" disabled>
                       <option value="" disabled selected>Select a bug category...</option>
                       <option value="Installation / Boot Issue">Installation / Boot Issue</option>
+                      <option value="Coretez Plugin Error">Coretez Plugin Error</option>
+                      <option value="Performance / High Memory Usage">Performance / High Memory Usage</option>
+                      <option value="System Security / Vulnerability">System Security / Vulnerability</option>
                     </select>
 
+                    <!-- Subject untuk Tab Collaboration -->
                     <select id="subject-collab" name="subject" class="tab-content form-input" disabled>
                       <option value="" disabled selected>Select a collaboration type...</option>
                       <option value="Academic Research Partnership">Academic Research Partnership</option>
+                      <option value="Open Source Contribution (Forgejo)">Open Source Contribution (Forgejo)</option>
+                      <option value="Institutional Deployment">Institutional Deployment</option>
+                      <option value="Sponsorship / Funding">Sponsorship / Funding</option>
                     </select>
                   </div>
 
                   <div style="margin-bottom: 2rem;">
                     <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Your message..." required class="form-input" style="resize: vertical;"></textarea>
+                    <textarea id="message" name="message" rows="5" placeholder="How can we help you build your institutional memory?" required class="form-input" style="resize: vertical;"></textarea>
                   </div>
 
-                  <div id="loading-indicator" class="htmx-indicator">
+                  <!-- Loading Indicator -->
+                  <div id="loading-indicator" style="display: none; margin-bottom: 1rem; color: var(--red-600); font-weight: bold; text-align: center;">
                     [ TRANSMITTING DATA... ]
                   </div>
 
-                  <button type="submit" class="btn btn-lg btn-primary btn-arrow" style="width: 100%; justify-content: center;">
+                  <button type="submit" id="submit-btn" class="btn btn-lg btn-primary btn-arrow" style="width: 100%; justify-content: center;">
                     Send Transmission
                   </button>
+
                 </form>
+
               </div>
+
             </div>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
@@ -143,62 +155,13 @@
     </span>
 
     <ul class="footer-links">
-      <li><a href="https://radova.org/abouts" hx-boost="false">Abouts</a></li>
+      <li><a href="https://radova.org/abouts">Abouts</a></li>
     </ul>
 
-    <p class="footer-copy">© 2026 yuros.org · Released under the MIT License</p>
+    <p class="footer-copy">© 2026 yuros.org · Released under the MIT License </p>
   </footer>
-
-  <script>
-    async function sendData(event) {
-      event.preventDefault();
-      const indicator = document.getElementById('loading-indicator');
-      const submitBtn = document.getElementById('submit-btn');
-      const responseBox = document.getElementById('contact-response');
-
-      indicator.style.display = 'block';
-      submitBtn.disabled = true;
-
-      // Ambil nilai dari form
-      const name = encodeURIComponent(document.getElementById('name').value);
-      const email = encodeURIComponent(document.getElementById('email').value);
-      const category = encodeURIComponent(document.getElementById('category').value);
-      const activeSubject = document.querySelector('.tab-content.active');
-      const subject = encodeURIComponent(activeSubject ? activeSubject.value : '');
-      const message = encodeURIComponent(document.getElementById('message').value);
-
-      // URL Web App Apps Script kamu
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbx_ipxtg9sxpAup2hmxzBN2NROT-j2GAzsbRuZWJ6Sb6pB-eExhYTeyo8AiYgTm1e7ZYw/exec';
-      // Kirim via URL Parameters (GET) agar tembus langsung ke Google Sheets
-      const finalURL = `${scriptURL}?name=${name}&email=${email}&category=${category}&subject=${subject}&message=${message}`;
-
-      try {
-        // Menggunakan teknik <img> ping atau fetch dengan mode no-cors
-        await fetch(finalURL, { method: 'GET', mode: 'no-cors' });
-
-        // Tampilkan pesan sukses
-        responseBox.innerHTML = `
-          <div style="text-align: center; padding: 2rem 0;">
-            <h3 style="color: #00A86B;">Transmission Successful!</h3>
-            <p>Your message has been securely delivered to the Radova Linux team.</p>
-            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1rem;">Send Another Message</button>
-          </div>
-        `;
-      } catch (error) {
-        responseBox.innerHTML = `
-          <div style="text-align: center; padding: 2rem 0; color: red;">
-            <h3>Transmission Failed</h3>
-            <p>${error.toString()}</p>
-            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1rem;">Try Again</button>
-          </div>
-        `;
-      }
-    }
-  </script>
-
-  <!-- File External Scripts -->
-  <script src="/assets/htmx.min.js" defer></script>
-  <script src="/assets/contact.js" defer></script>
+  <script src="/assets/contact.js"></script>
+  <script src="/assets/site.js"></script>
+  <script src="/assets/htmx.min.js"></script>
 </body>
-
 </html>
