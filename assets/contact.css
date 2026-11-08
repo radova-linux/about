@@ -77,8 +77,8 @@ form label {
   display: inline-block;
 }
 
-:where(ol, ul) .dropdown li {
-  margin: 0;
+.dropdown li {
+  margin: 0 !important;
 }
 
 .dropdown-content {
