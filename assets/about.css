@@ -1,14 +1,14 @@
 /* About page: standalone white theme with red accents (Linear-style layout), palette from the brand guide */
 @font-face {
   font-family: "Lato";
-  src: url("/assets/fonts/lato-latin-900.woff2") format("woff2");
+  src: url("fonts/lato-latin-900.woff2") format("woff2");
   font-weight: 900;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Roboto Variable";
-  src: url("/assets/fonts/roboto-latin-wght.woff2") format("woff2-variations");
+  src: url("fonts/roboto-latin-wght.woff2") format("woff2-variations");
   font-weight: 400 700;
   font-display: swap;
 }
