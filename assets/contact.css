@@ -78,7 +78,7 @@ form label {
   
 }
 
-.dropdown-content a:hover{
+nav.navbar li :where(a, [role="link"]){
   margin: 0 !important;
 }
 
