@@ -12,24 +12,42 @@
   <link rel="preload" as="font" type="font/woff2" href="assets/fonts/roboto-latin-wght.woff2" crossorigin>
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="https://radova.org/abouts/assets/about.css">
+  <link rel="stylesheet" href="https://radova.org/abouts/assets/site.css?v=8">
+  <link rel="stylesheet" href="https://radova.org/abouts/assets/contact.css">
 </head>
 <body>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="ab-header">
-    <div class="wrap">
-      <a class="brand" href="/" aria-label="Radova Linux home">
-        <img src="assets/logo.png" alt="" width="26" height="26">
-        RADOVA
-      </a>
-      <nav class="ab-nav" aria-label="Main">
-        <a href="/">Home</a>
-        <a href="index.html">About</a>
-        <a href="history.html" aria-current="page">History</a>
-        <a href="https://sourceforge.net/projects/memora/files/radova-linux-2026.11.06-x86_64.iso/download" class="keep">Download</a>
-      </nav>
-    </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a href="/" class="brand-lockup">
+      <img src="/assets/logo.png" alt="Radova Logo" width="32">
+      <span class="brand-name">RADOVA</span>
+    </a>
+<nav class="navbar">
+  <ul class="nav-links">
+    <li class="dropdown">
+      <a id="test2" href="#" class="btn-navy">About</a>
+      <div class="menu-arrow"></div>
+      <div class="dropdown-content">
+        <a class="d-content-h" href="/index.html">
+          About Radova Linux <i class="ph ph-linux-logo"></i>
+        </a>
+        <a href="/history.html">
+          History
+          <i class="ph ph-clock-counter-clockwise"></i>
+        </a>
+        <a class="d-content-c" href="/contact.html">
+          Contact
+          <i class="ph ph-envelope-simple"></i>
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+      
   </header>
 
   <main id="main" tabindex="-1">
@@ -476,5 +494,8 @@
       apply();
     })();
   </script>
+  <script src="https://radova.org/abouts/assets/navbar.js"></script>
+
+
 </body>
 </html>
