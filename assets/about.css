@@ -352,12 +352,15 @@ p { margin: 0; text-wrap: balance; }
 .timeline {
   /* one size scale for the whole timeline; the mobile query shrinks it */
   --tl-pad: 1.5rem;
-  --tl-title: 1.375rem;
+  --tl-title: 1.75rem; /* 28px */
   --tl-row: 1.75rem; /* title row height = pill height */
-  --tl-gap: 2rem; /* space between milestones */
-  --tl-card-min: 10rem; /* every card at least this tall, so short ones line up */
+  --tl-gap: 4.5rem; /* space between milestones */
+  --tl-col-gap: 5rem; /* space between the two columns (the line sits in the middle) */
+  --tl-stagger: 2.5rem; /* two columns: minimum drop from one milestone to the next (dots never collide, order reads top to bottom) */
+  --tl-card-min: 16rem; /* standard minimum card height; busier cards simply grow */
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr); /* columns follow the screen, not the one-line rows' content */
   gap: var(--tl-gap);
   max-width: 52rem;
   list-style: none;
@@ -382,7 +385,7 @@ p { margin: 0; text-wrap: balance; }
   content: "";
   position: absolute;
   left: 0;
-  top: calc(var(--tl-row) / 2 - 7px);
+  top: calc(max(var(--tl-row), var(--tl-title) * 1.2) / 2 - 7px); /* centre of the title row: pill or title, whichever is taller */
   width: 14px;
   height: 14px;
   border-radius: 50%;
@@ -400,13 +403,13 @@ p { margin: 0; text-wrap: balance; }
   min-height: var(--tl-row);
 }
 
-.tl-head h3 { margin-right: auto; font: 700 var(--tl-title)/1.3 var(--font-body); letter-spacing: -0.01em; }
+.tl-head h3 { margin-right: auto; font: 700 var(--tl-title)/1.2 var(--font-body); letter-spacing: -0.01em; }
 
 /* one pill per milestone: "Place, D Month YYYY" */
 .tl-pill {
   display: inline-block;
-  padding: 0 0.625rem;
-  border-radius: 6px;
+  padding: 0 0.75rem;
+  border-radius: 999px;
   background: var(--red-gradient);
   color: var(--white);
   font: 600 0.8125rem/var(--tl-row) var(--font-body);
@@ -415,6 +418,8 @@ p { margin: 0; text-wrap: balance; }
 }
 
 .tl-card {
+  display: flex; /* column, so people and media can sit at the bottom */
+  flex-direction: column;
   min-height: var(--tl-card-min);
   margin-top: 0.75rem;
   padding: var(--tl-pad);
@@ -427,9 +432,54 @@ p { margin: 0; text-wrap: balance; }
 
 .timeline > li:hover .tl-card { border-color: rgba(219, 0, 15, 0.35); }
 
-.tl-card p { color: var(--muted); text-wrap: pretty; } /* fill the card width; balance left a ragged empty right side */
-.tl-card .member-name { font-size: 0.9375rem; }
+.tl-card p { color: var(--muted); }
+/* people chips show only the photo; a tooltip with photo, name and role appears on hover, keyboard focus or tap
+   (built by the script in history.html from the chip and its data-role) */
+.tl-card .member { position: relative; gap: 0; padding: 0.3rem; cursor: default; }
+.tl-card .member:is(:hover, :focus-visible) { border-color: rgba(219, 0, 15, 0.35); }
+.tl-card .member-name { /* visually hidden, still read by screen readers */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.member-tip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.5rem;
+  border-radius: 12px;
+  background: var(--navy);
+  color: var(--white);
+  white-space: nowrap;
+  box-shadow: 0 12px 28px -10px rgba(14, 3, 71, 0.5);
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.member-tip .avatar { width: 44px; height: 44px; font-size: 1rem; }
+.member-tip strong { display: block; font: 700 0.9375rem/1.3 var(--font-body); }
+.member-tip strong + span { display: block; font-size: 0.8125rem; line-height: 1.3; color: rgba(255, 255, 255, 0.75); }
+.member-tip::after { /* arrow pointing at the chip */
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top-color: var(--navy);
+}
+.tl-card .member:is(:hover, :focus) .member-tip { opacity: 1; transform: translate(-50%, 0); }
 .tl-card :is(.members, .tl-media) { justify-content: flex-start; margin-top: 1rem; }
+.tl-card > p:not(:last-child) { margin-bottom: 1rem; }
+.tl-card > p + :is(.members, .tl-media) { margin-top: auto; } /* push people and media to the card bottom */
 /* grey rule between the people and the documentation below them */
 .tl-card .members + .tl-media { padding-top: 1rem; border-top: 1px solid var(--line); }
 
@@ -480,15 +530,17 @@ p { margin: 0; text-wrap: balance; }
 
 .tl-count { margin-left: auto; font: 500 0.875rem/1 var(--font-mono); color: var(--muted); }
 
-/* Wide screens (with JS): two interlocking columns around a centre line */
+/* Wide screens (with JS): two interlocking columns around a centre line.
+   The script measures every card and sets its top and the list height (see pack() in history.html);
+   keep this breakpoint in sync with the matchMedia there. */
 @media (min-width: 901px) {
-  .timeline.is-split { grid-template-columns: 1fr 1fr; column-gap: 3rem; max-width: none; }
+  .timeline.is-split { display: block; max-width: none; }
   .timeline.is-split::before { left: 50%; margin-left: -1px; }
-  .timeline.is-split > li { padding-left: 0; grid-row: var(--row) / span 2; }
-  .timeline.is-split > li[data-side="left"] { grid-column: 1; }
-  .timeline.is-split > li[data-side="right"] { grid-column: 2; }
-  .timeline.is-split > li[data-side="left"]::before { left: auto; right: calc(-1.5rem - 7px); }
-  .timeline.is-split > li[data-side="right"]::before { left: calc(-1.5rem - 7px); }
+  .timeline.is-split > li { position: absolute; width: calc((100% - var(--tl-col-gap)) / 2); padding-left: 0; }
+  .timeline.is-split > li[data-side="left"] { left: 0; }
+  .timeline.is-split > li[data-side="right"] { right: 0; }
+  .timeline.is-split > li[data-side="left"]::before { left: auto; right: calc(var(--tl-col-gap) / -2 - 7px); }
+  .timeline.is-split > li[data-side="right"]::before { left: calc(var(--tl-col-gap) / -2 - 7px); }
   /* left column: title row hugs the centre line, as in the reference */
   .timeline.is-split > li[data-side="left"] .tl-head { flex-direction: row-reverse; text-align: right; }
   .timeline.is-split > li[data-side="left"] .tl-head h3 { margin-right: 0; margin-left: auto; }
@@ -597,15 +649,6 @@ p { margin: 0; text-wrap: balance; }
 .tl-next:hover { background: rgba(255, 255, 255, 0.15); }
 
 .tl-lightbox.is-single :is(.tl-prev, .tl-next) { visibility: hidden; }
-
-/* Hover (mouse only; touch screens keep everything visible) */
-@media (hover: hover) {
-  /* people chips show only the photo; the name slides out on hover */
-  .tl-card .member { gap: 0; padding-right: 0.3rem; transition: border-color 0.3s, padding 0.3s; }
-  .tl-card .member-name { max-width: 0; opacity: 0; overflow: hidden; white-space: nowrap; transition: max-width 0.3s, opacity 0.3s, margin 0.3s; }
-  .tl-card .member:hover { padding-right: 0.9rem; border-color: rgba(219, 0, 15, 0.35); }
-  .tl-card .member:hover .member-name { max-width: 12rem; margin-left: 0.6rem; opacity: 1; }
-}
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .tl-card { transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
