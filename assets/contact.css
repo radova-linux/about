@@ -77,6 +77,10 @@ form label {
   display: inline-block;
 }
 
+:where(ol, ul) .dropdown li {
+  margin: 0;
+}
+
 .dropdown-content {
   position: absolute;
   top: calc(100% + 18px);
