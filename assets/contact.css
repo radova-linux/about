@@ -75,11 +75,9 @@ form label {
 .dropdown {
   position: relative;
   display: inline-block;
-}
-
-.dropdown li {
   margin: 0 !important;
 }
+
 
 .dropdown-content {
   position: absolute;
