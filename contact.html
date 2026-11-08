@@ -7,10 +7,10 @@
   <title>Contact — Radova Linux</title>
   <meta name="description" content="Get in touch with the Radova Linux team for support regarding institutional memory, archives, and digital asset sovereignty.">
   <link rel="canonical" href="https://radova.org/contact">
-  <link rel="stylesheet" href="/asset/pico.min.css">
+  <link rel="stylesheet" href="/assets/pico.min.css">
   <link rel="stylesheet" href="/assets/site.css?v=8">
   <link rel="stylesheet" href="/assets/contact.css">
-</head>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script></head>
 <body>
 
   <a class="skip-link" href="#main">Skip to content</a>
@@ -20,10 +20,28 @@
       <img src="/assets/logo.png" alt="Radova Logo" width="32">
       <span class="brand-name">RADOVA</span>
     </a>
-
-    <div class="header-cta">
-      <a href="https://radova.org" class="btn btn-sm btn-outline">Back to Home</a>
-    </div>
+<nav class="navbar">
+  <ul class="nav-links">
+    <li class="dropdown">
+      <a id="test2" href="#" class="btn-navy">About</a>
+      <div class="menu-arrow"></div>
+      <div class="dropdown-content">
+        <a class="d-content-h" href="/index.html">
+          About Radova Linux <i class="ph ph-linux-logo"></i>
+        </a>
+        <a href="/history.html">
+          History
+          <i class="ph ph-clock-counter-clockwise"></i>
+        </a>
+        <a class="d-content-c" href="/contact.html">
+          Contact
+          <i class="ph ph-envelope-simple"></i>
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+      
   </header>
 
   <main id="main" tabindex="-1">
@@ -34,7 +52,6 @@
       </div>
 
       <div class="hero-split">
-        <!-- Kolom Kiri: Info Kontak Radova -->
         <div class="hero-split-left">
           <h1 id="contact-title">Start the <br><span>conversation</span></h1>
           <p class="lead hero-lead">Have questions about deploying Radova Linux for your institutional repository, digital archives, or library management? Drop us a line.</p>
@@ -163,5 +180,6 @@
   <script src="/assets/contact.js"></script>
   <script src="/assets/site.js"></script>
   <script src="/assets/htmx.min.js"></script>
+  <script src="/assets/navbar.js"></script>
 </body>
 </html>

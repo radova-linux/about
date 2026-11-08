@@ -17,7 +17,7 @@
   text-transform: uppercase;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 16px;
   transition: all 0.2s ease;
 }
 
@@ -53,7 +53,7 @@ form label {
   margin-top: 0.5rem;
   background: var(--lavender);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 16px;
   width: 100%;
 }
 
@@ -70,4 +70,180 @@ form label {
 .htmx-request .htmx-indicator,
 .htmx-request.htmx-indicator {
   display: block;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 0;
+  transform: translateY(-10px);
+  background: var(--white);
+  min-width: 260px;
+  border-radius: 16px;
+  box-shadow: 0 16px 15px rgba(0, 0, 0, 0.08);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  border: 1px solid #A3A3A3;
+}
+
+.nav-links li:last-child .dropdown-content {
+  left: auto;
+  right: 0;
+}
+
+.dropdown-content.active {
+  display: block;
+  position: relative;
+  grid-template-rows: 1fr;
+}
+
+.dropdown-content a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  color: #A3A3A3; 
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-bottom: 1px solid #F0F0F0;
+  transition: all 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background: rgba(14, 3, 71, 0.05);
+  color: var(--red-900);
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover,
+.dropdown-content a:focus {
+  background-color: #db000f;
+  color: var(--white);
+  border-color: #DB000F;
+}
+.d-content-h:hover {
+  border-radius: 16px 16px 0 0;
+}
+
+.d-content-c:hover {
+  border-radius: 0 0 16px 16px;
+}
+.menu-arrow.tab-btn.active .dropdown-content.active {
+  display: block !important;
+}
+
+/* Memunculkan Dropdown dan Panah saat memiliki class active dari JS */
+.dropdown-content.active,
+.btn-navy.active ~ .dropdown-content,
+.dropdown:hover .dropdown-content { 
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Memunculkan panah penunjuk (arrow) */
+.btn-navy.active + .menu-arrow,
+.dropdown:hover .menu-arrow {
+  display: block;
+}
+
+.dropdown-content a iconify-icon {
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.dropdown-content a:hover iconify-icon {
+  opacity: 1;
+}
+
+.btn:hover {
+  border-radius: 16px;
+}
+
+.menu-arrow {
+  position: absolute;
+  top: 100%;
+  left: 20px;
+  transform: translateX(0);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #A3A3A3;
+  z-index: 100;
+  display: none;
+  margin-top: 8px;
+}
+
+.nav-links li:last-child .menu-arrow {
+  left: auto;
+  right: 15px;
+}
+
+.icon {
+  font-size: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 3rem;
+}
+
+.btn-navy {
+  border: none;
+  color: #f7f6ff;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-navy:hover {
+  background: rgba(14, 3, 71, 0.05);
+  color: var(--red-900);
+}
+
+.btn-navy.active {
+  background: var(--red-900);
+  color: var(--white);
+}
+
+.dropdown-content i {
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.dropdown-content i:hover {
+  opacity: 1;
+}
+
+/* responesive */
+@media (max-width: 768px) {
+  /* Ubah menu menjadi rata kiri mengikuti tombol */
+  .dropdown-content {
+    min-width: 220px;
+  }
+
+  /* Hapus efek geser (-50%) saat menu terbuka di mobile */
+  
+  /* Sesuaikan posisi panah agar tepat berada di bawah tombol ABOUT */
+  
 }
