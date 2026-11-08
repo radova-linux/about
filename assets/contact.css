@@ -78,7 +78,7 @@ form label {
   
 }
 
-.dropdown a{
+.dropdown-content a:hover{
   margin: 0 !important;
 }
 
