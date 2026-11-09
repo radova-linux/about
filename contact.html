@@ -10,7 +10,25 @@
   <link rel="stylesheet" href="https://radova.org/abouts/assets/pico.min.css">
   <link rel="stylesheet" href="https://radova.org/abouts/assets/site.css?v=8">
   <link rel="stylesheet" href="https://radova.org/abouts/assets/contact.css">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script></head>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<style>
+  .tab-btn {
+    font-size: 10px !important;
+  }
+  .dropdown-content {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      transform: translateY(-6px) !important;
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease !important;
+  }
+  .dropdown-content.active,
+  .dropdown:hover .dropdown-content {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+  }
+</style>
 <body>
 
   <a class="skip-link" href="#main">Skip to content</a>
