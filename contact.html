@@ -15,33 +15,36 @@
 
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+<header class="site-header">
     <a href="/" class="brand-lockup">
       <img src="/assets/logo.png" alt="Radova Logo" width="32">
       <span class="brand-name">RADOVA</span>
     </a>
-<nav class="navbar">
-  <ul class="nav-links">
-    <li class="dropdown">
-      <a id="test2" href="#" class="btn-navy">About</a>
-      <div class="menu-arrow"></div>
-      <div class="dropdown-content">
-        <a class="d-content-h" href="/index.html">
-          About Radova Linux <i class="ph ph-linux-logo"></i>
-        </a>
-        <a href="/history.html">
-          History
-          <i class="ph ph-clock-counter-clockwise"></i>
-        </a>
-        <a class="d-content-c" href="/contact.html">
-          Contact
-          <i class="ph ph-envelope-simple"></i>
-        </a>
-      </div>
-    </li>
-  </ul>
-</nav>
-      
+
+    <!-- Menggunakan pembungkus .header-cta yang terbukti aman di index.html -->
+    <div class="header-cta">
+      <nav class="navbar" style="display: inline-block; position: relative;">
+        <ul class="nav-links" style="list-style: none; margin: 0; padding: 0;">
+          <li class="dropdown" style="position: relative; display: inline-block;">
+            <a id="test2" href="#" class="btn-navy">About</a>
+            <div class="menu-arrow"></div>
+            <div class="dropdown-content">
+              <a class="d-content-h" href="/index.html">
+                About Radova Linux <i class="ph ph-linux-logo"></i>
+              </a>
+              <a href="/history.html">
+                History
+                <i class="ph ph-clock-counter-clockwise"></i>
+              </a>
+              <a class="d-content-c" href="/contact.html">
+                Contact
+                <i class="ph ph-envelope-simple"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main id="main" tabindex="-1">

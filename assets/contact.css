@@ -13,7 +13,7 @@
   color: var(--muted);
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 10px;
   text-transform: uppercase;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -38,7 +38,6 @@
 .tab-content.active { 
   display: block; 
 }
-
 /* Form Styling Refactoring from inline styles */
 form label {
   font-family: var(--font-mono);
@@ -72,42 +71,47 @@ form label {
   display: block;
 }
 
+.site-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.navbar {
+  margin-left: auto !important;
+}
+
 .dropdown {
-  position: relative;
-  display: inline-block;
-  
+  position: relative !important;
+  display: inline-block !important;
 }
 
 nav.navbar li :where(a, [role="link"]){
   margin: 0 !important;
 }
 
-
 .dropdown-content {
-  position: absolute;
-  top: calc(100% + 18px);
-  left: 0;
-  transform: translateY(-10px);
+  position: absolute !important;
+  top: calc(100% + 18px) !important;
+  right: 0 !important;
+  left: auto !important;
+  transform: translateY(-10px) !important;
   background: var(--white);
-  min-width: 260px;
+  min-width: 250px !important;
+  max-width: calc(100vw - 32px) !important;
   border-radius: 16px;
   box-shadow: 0 16px 15px rgba(0, 0, 0, 0.08);
-  z-index: 99;
+  z-index: 999 !important;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
   border: 1px solid #A3A3A3;
 }
 
-.nav-links li:last-child .dropdown-content {
-  left: auto;
-  right: 0;
-}
-
 .dropdown-content.active {
-  display: block;
-  position: relative;
-  grid-template-rows: 1fr;
+  display: block !important;
+  position: absolute !important;
 }
 
 .dropdown-content a {
@@ -152,19 +156,17 @@ nav.navbar li :where(a, [role="link"]){
   display: block !important;
 }
 
-/* Memunculkan Dropdown dan Panah saat memiliki class active dari JS */
 .dropdown-content.active,
 .btn-navy.active ~ .dropdown-content,
 .dropdown:hover .dropdown-content { 
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
 }
 
-/* Memunculkan panah penunjuk (arrow) */
 .btn-navy.active + .menu-arrow,
 .dropdown:hover .menu-arrow {
-  display: block;
+  display: block !important;
 }
 
 .dropdown-content a iconify-icon {
@@ -181,23 +183,19 @@ nav.navbar li :where(a, [role="link"]){
 }
 
 .menu-arrow {
-  position: absolute;
-  top: 100%;
-  left: 20px;
-  transform: translateX(0);
+  position: absolute !important;
+  top: 100% !important;
+  right: 20px !important;
+  left: auto !important;
+  transform: none !important;
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid #A3A3A3;
-  z-index: 100;
+  z-index: 1000 !important;
   display: none;
   margin-top: 8px;
-}
-
-.nav-links li:last-child .menu-arrow {
-  left: auto;
-  right: 15px;
 }
 
 .icon {
@@ -241,15 +239,14 @@ nav.navbar li :where(a, [role="link"]){
   opacity: 1;
 }
 
-/* responesive */
-@media (max-width: 768px) {
-  /* Ubah menu menjadi rata kiri mengikuti tombol */
-  .dropdown-content {
-    min-width: 220px;
+@media (mac-width: 768px) {
+  .site-header nav.navbar {
+    order: 0 !important;
+    width: auto !important; 
+    margin-left: auto !important;
   }
 
-  /* Hapus efek geser (-50%) saat menu terbuka di mobile */
-  
-  /* Sesuaikan posisi panah agar tepat berada di bawah tombol ABOUT */
-  
+  .site-header {
+    flex-wrap: nowrap !important ;
+  }
 }
