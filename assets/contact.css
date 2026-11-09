@@ -149,6 +149,7 @@ nav.navbar li :where(a, [role="link"]){
   border-radius: 16px 16px 0 0;
 }
 
+.d
 .d-content-c:hover {
   border-radius: 0 0 16px 16px;
 }
