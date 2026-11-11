@@ -7,9 +7,9 @@
   <title>Contact — Radova Linux</title>
   <meta name="description" content="Get in touch with the Radova Linux team for support regarding institutional memory, archives, and digital asset sovereignty.">
   <link rel="canonical" href="https://radova.org/contact">
-  <link rel="stylesheet" href="https://radova.org/abouts/assets/pico.min.css">
-  <link rel="stylesheet" href="https://radova.org/abouts/assets/site.css?v=8">
-  <link rel="stylesheet" href="https://radova.org/abouts/assets/contact.css">
+  <link rel="stylesheet" href="https://radova.org/about/assets/pico.min.css">
+  <link rel="stylesheet" href="https://radova.org/about/assets/site.css?v=8">
+  <link rel="stylesheet" href="https://radova.org/about/assets/contact.css">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <style>
@@ -33,30 +33,43 @@
 
   <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header">
-    <a href="/" class="brand-lockup">
+ <header class="site-header">
+    <span class="brand-lockup">
       <img src="/assets/logo.png" alt="Radova Logo" width="32">
       <span class="brand-name">RADOVA</span>
-    </a>
+    </span>
 
-    <!-- Menggunakan pembungkus .header-cta yang terbukti aman di index.html -->
+    <nav aria-label="Primary navigation">
+      <ul class="nav-list">
+        <li><a target="_blank" href="https://packer.radova.org">Packages</a></li>
+        <li><a target="_blank" href="https://wiki.radova.org">Wiki</a></li>
+        <li><a href="https://radova.org/learns">Learning</a></li>
+        <li><a href="https://radova.org/events">Events</a></li>
+        <li><a href="https://radova.org/latest">Latest</a></li>
+        <!--
+        <li><a href="#spesifikasi">Specs</a></li>
+        <li><a href="{{REPO_URL}}" hx-boost="false"></a></li>
+        -->
+      </ul>
+    </nav>
+
     <div class="header-cta">
-      <nav class="navbar" style="display: inline-block; position: relative;">
-        <ul class="nav-links" style="list-style: none; margin: 0; padding: 0;">
-          <li class="dropdown" style="position: relative; display: inline-block;">
-            <a id="test2" href="#" class="btn-navy">About</a>
-            <div class="menu-arrow"></div>
-            <div class="dropdown-content">
-              <a class="d-content-h" href="/index.html">
-                About Radova Linux <i class="ph ph-linux-logo"></i>
+      <nav class="navbar" aria-label="About menu">
+        <ul class="nav-links">
+          <li class="dropdown">
+            <a id="test2" href="#" class="btn-navy" aria-haspopup="true" aria-expanded="false">About</a>
+            <div class="menu-arrow" aria-hidden="true"></div>
+            <div class="dropdown-content" role="menu">
+              <a class="d-content-h" href="https://radova.org/about/" role="menuitem">
+                About<i class="ph ph-linux-logo" aria-hidden="true"></i>
               </a>
-              <a class="d-content-r" href="/history.html">
+              <a class="d-content-r" href="https://radova.org/about/history" role="menuitem">
                 History
-                <i class="ph ph-clock-counter-clockwise"></i>
+                <i class="ph ph-clock-counter-clockwise" aria-hidden="true"></i>
               </a>
-              <a class="d-content-c" href="/contact.html">
+              <a class="d-content-c" href="https://radova.org/about/contact" role="menuitem">
                 Contact
-                <i class="ph ph-envelope-simple"></i>
+                <i class="ph ph-envelope-simple" aria-hidden="true"></i>
               </a>
             </div>
           </li>
@@ -64,7 +77,6 @@
       </nav>
     </div>
   </header>
-
   <main id="main" tabindex="-1">
 
     <section id="contact-hero" class="hero" data-label="GET IN TOUCH" aria-labelledby="contact-title">
@@ -188,14 +200,14 @@
     </span>
 
     <ul class="footer-links">
-      <li><a href="https://radova.org/abouts">Abouts</a></li>
+      <li><a href="https://radova.org/about">About</a></li>
     </ul>
 
     <p class="footer-copy">© 2026 yuros.org · Released under the MIT License </p>
   </footer>
-  <script src="https://radova.org/abouts/assets/contact.js"></script>
-  <script src="https://radova.org/abouts/assets/site.js"></script>
-  <script src="https://radova.org/abouts/assets/htmx.min.js"></script>
-  <script src="https://radova.org/abouts/assets/navbar.js"></script>
+  <script src="https://radova.org/about/assets/contact.js"></script>
+  <script src="https://radova.org/about/assets/site.js"></script>
+  <script src="https://radova.org/about/assets/htmx.min.js"></script>
+  <script src="https://radova.org/about/assets/navbar.js"></script>
 </body>
 </html>
